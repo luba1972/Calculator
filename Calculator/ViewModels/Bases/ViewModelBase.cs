@@ -16,7 +16,6 @@ namespace Calculator.ViewModels.Bases
 
         protected virtual void RegisterCommands()
         {
-            throw new NotImplementedException();
         }
     }
 }
