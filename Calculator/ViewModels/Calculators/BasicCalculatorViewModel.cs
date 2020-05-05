@@ -9,7 +9,7 @@ using Prism.Commands;
 
 namespace Calculator.ViewModels.Calculators
 {
-    class BasicCalculatorViewModel:ViewModelBase
+    class BasicCalculatorViewModel:CalculatorViewModel
     {
         private readonly ICalculator _calculator;
         private bool hasCalculated = false;
@@ -25,6 +25,9 @@ namespace Calculator.ViewModels.Calculators
         public DelegateCommand<string> AddNumberCommand { get; set; }
         public DelegateCommand ClearCommand { get; set; }
         public DelegateCommand EqualsCommand { get; set; }
+
+        public override string CalculatorType => "Basic";
+
         public BasicCalculatorViewModel(ICalculator calculator)
         {
             _calculator = calculator;

@@ -1,6 +1,7 @@
 ﻿using Calculator.Core.Calculators;
 using Calculator.ViewModels.Bases;
 using Calculator.ViewModels.Calculators;
+using Calculator.ViewModels.Interfaces;
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
@@ -21,12 +22,30 @@ namespace Calculator.ViewModels
             SelectedCalculatorViewModel = viewModel;
         }
 
-        private ViewModelBase _selectedCalculatorViewModel;
-        public ViewModelBase SelectedCalculatorViewModel
+        private ICalculatorViewModel _selectedCalculatorViewModel;
+        public ICalculatorViewModel SelectedCalculatorViewModel
         {
             get => _selectedCalculatorViewModel;
             set => SetProperty(ref _selectedCalculatorViewModel, value);
         }
 
+        private bool _flyoutOpen;
+        public bool FlyoutOpen
+        {
+            get => _flyoutOpen;
+            set => SetProperty(ref _flyoutOpen, value);
+        }
+
+        public DelegateCommand OpenFlyoutCommand { get; set; }
+
+        protected override void RegisterCommands()
+        {
+            OpenFlyoutCommand = new DelegateCommand(OpenFlyout);
+        }
+
+        private void OpenFlyout()
+        {
+            FlyoutOpen = true;
+        }
     }
 }
