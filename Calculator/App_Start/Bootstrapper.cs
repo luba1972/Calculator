@@ -2,6 +2,9 @@
 using System.Windows;
 using Unity;
 using Calculator.Views;
+using System.ComponentModel;
+using Calculator.Core.Helpers;
+using System.Configuration;
 
 namespace Calculator.App_Start
 {
@@ -19,7 +22,14 @@ namespace Calculator.App_Start
         protected override void ConfigureContainer()
         {
             base.ConfigureContainer();
-            Container = Container.RegisterInstances();
+            Container = Container
+                .RegisterSingletons()
+                .RegisterInstances();
         }
+
+
+
+
+
     }
 }

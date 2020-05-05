@@ -105,12 +105,16 @@
     <Compile Include="App_Start\Unity_Config.cs" />
     <Compile Include="Core\Calculators\ExpressionCalculator.cs" />
     <Compile Include="Core\Calculators\ICalculator.cs" />
+    <Compile Include="Core\Constants\Calculators.cs" />
+    <Compile Include="Core\Helpers\ContainerHelper.cs" />
+    <Compile Include="Core\Helpers\IContainerHelper.cs" />
     <Compile Include="Models\Calculation.cs" />
+    <Compile Include="Models\CalculatorType.cs" />
+    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Bases\CalculatorViewModel.cs" />
     <Compile Include="ViewModels\Bases\ViewModelBase.cs" />
     <Compile Include="ViewModels\Calculators\BasicCalculatorViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\ICalculatorViewModel.cs" />
-    <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="Views\Shell.xaml.cs">
       <DependentUpon>Shell.xaml</DependentUpon>
     </Compile>

@@ -4,11 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator.Views"
+        xmlns:constants="clr-namespace:Calculator.Core.Constants"
         mc:Ignorable="d"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:fa="http://schemas.fontawesome.io/icons/"
         prism:ViewModelLocator.AutoWireViewModel="True"
         xmlns:mah ="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         Title="{Binding Title}" 
         Height="400" Width="350">
     <Window.Resources>
@@ -26,7 +28,15 @@
         </StackPanel>
            <ContentControl Content="{Binding SelectedCalculatorViewModel}"></ContentControl>
         </StackPanel>
-        <mah:Flyout Width="200" Position="Left" IsOpen="{Binding FlyoutOpen}"></mah:Flyout>
+        <mah:Flyout Width="200" Position="Left" IsOpen="{Binding FlyoutOpen}">
+            <ListBox x:Name="ListBox" DisplayMemberPath="DisplayName" ItemsSource ="{x:Static constants:Calculators.CalculatorTypes}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding CalculatorChangeCommand}" CommandParameter="{Binding ElementName=ListBox, Path=SelectedItem}"></i:InvokeCommandAction>
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </mah:Flyout>
 
     </Grid>
 </mah:MetroWindow>
