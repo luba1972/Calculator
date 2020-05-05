@@ -12,10 +12,10 @@ namespace Calculator.ViewModels.Bases
         public ViewModelBase()
         {
             RegisterCommands();
+            RegisterCollections();
         }
 
-        protected virtual void RegisterCommands()
-        {
-        }
+        protected virtual void RegisterCommands(){}
+        public virtual void RegisterCollections() { }
     }
 }

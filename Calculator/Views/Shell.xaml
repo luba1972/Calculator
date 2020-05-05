@@ -14,18 +14,31 @@
         Title="{Binding Title}" 
         Height="400" Width="350">
     <Window.Resources>
-        <ResourceDictionary Source="../Styles/Calculators/BasicCalculators.xaml"></ResourceDictionary>
+        <Style TargetType="fa:ImageAwesome">
+            <Setter Property ="Width"  Value = "50"></Setter>
+            <Setter Property="Height" Value="50"></Setter>
+        </Style>
     </Window.Resources>
     <Grid>
         <StackPanel>
-           <StackPanel Orientation="Horizontal">
-                <Button Command="{Binding OpenFlyoutCommand}" Background="White" BorderThickness="0">
-                <Button.Content>
-                    <fa:ImageAwesome Height="50" Width="50" Icon="bars"></fa:ImageAwesome>
-                </Button.Content>
-            </Button>
-            <Label VerticalAlignment="Bottom" FontSize ="30" FontWeight="Bold" Content="{Binding SelectedCalculatorViewModel.CalculatorType}"></Label>
-        </StackPanel>
+           <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" ></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Command="{Binding OpenFlyoutCommand}" CommandParameter="FlyoutOpen" Style="{StaticResource MenuButton}" >
+                    <Button.Content>
+                        <fa:ImageAwesome Icon="bars"></fa:ImageAwesome>
+                    </Button.Content>
+                </Button>
+                <Label Grid.Column="1" VerticalAlignment="Bottom" FontSize ="30" FontWeight="Bold" Content="{Binding SelectedCalculatorViewModel.CalculatorType}"></Label>
+                <Button Grid.Column="2" Command="{Binding OpenFlyoutCommand}" CommandParameter="BottomFlyoutOpen" Style="{StaticResource MenuButton}">
+                    <Button.Content>
+                        <fa:ImageAwesome Icon="ClockOutline"></fa:ImageAwesome>
+                    </Button.Content>
+                </Button>
+            </Grid>
            <ContentControl Content="{Binding SelectedCalculatorViewModel}"></ContentControl>
         </StackPanel>
         <mah:Flyout Width="200" Position="Left" IsOpen="{Binding FlyoutOpen}">
@@ -35,6 +48,28 @@
                         <i:InvokeCommandAction Command="{Binding CalculatorChangeCommand}" CommandParameter="{Binding ElementName=ListBox, Path=SelectedItem}"></i:InvokeCommandAction>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
+            </ListBox>
+        </mah:Flyout>
+        <mah:Flyout Position="Bottom" Height="200" IsOpen="{Binding BottomFlyoutOpen}">
+            <ListBox ItemsSource="{Binding SelectedCalculatorViewModel.Calculations}" Margin="5">
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                            <RowDefinition Height="Auto"></RowDefinition>
+                                        </Grid.RowDefinitions>
+                                        <TextBlock HorizontalAlignment="Right" Text= "{Binding Expression}"></TextBlock>
+                                        <TextBlock Grid.Row="1" FontWeight="Bold" FontSize="20" HorizontalAlignment="Right" Text= "{Binding Value}"></TextBlock>
+                                    </Grid>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
             </ListBox>
         </mah:Flyout>
 

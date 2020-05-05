@@ -9,58 +9,16 @@ using Prism.Commands;
 
 namespace Calculator.ViewModels.Calculators
 {
-    class BasicCalculatorViewModel:CalculatorViewModel
+    class BasicCalculatorViewModel:CalculatorViewModelBase
     {
-        private readonly ICalculator _calculator;
-        private bool hasCalculated = false;
 
-        private string _expression = string.Empty;
+         public override string CalculatorType => "Basic";
 
-        public string Expression
+        public BasicCalculatorViewModel(ICalculator calculator):base(calculator)
         {
-            get => _expression;
-            set => SetProperty(ref _expression, value);
         }
 
-        public DelegateCommand<string> AddNumberCommand { get; set; }
-        public DelegateCommand ClearCommand { get; set; }
-        public DelegateCommand EqualsCommand { get; set; }
 
-        public override string CalculatorType => "Basic";
-
-        public BasicCalculatorViewModel(ICalculator calculator)
-        {
-            _calculator = calculator;
-        }
-
-        protected override void RegisterCommands()
-        {
-            AddNumberCommand = new DelegateCommand<string>(AddNumber);
-            ClearCommand = new DelegateCommand(Clear);
-            EqualsCommand = new DelegateCommand(Calculate);
-        }
-
-        private void Calculate()
-        {
-            Expression = _calculator.Calculate(Expression).ToString("N2");
-            hasCalculated = true;
-        }
-
-        private void Clear()
-        {
-            Expression = "";
-        }
-
-        private void AddNumber(string digit)
-        {
-            if (hasCalculated == true)
-            {
-                Expression = string.Empty;
-                hasCalculated = false;
-            }
-            Expression += digit;
-
-        }
     }
 
 }

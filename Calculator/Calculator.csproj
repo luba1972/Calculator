@@ -110,8 +110,9 @@
     <Compile Include="Core\Helpers\IContainerHelper.cs" />
     <Compile Include="Models\Calculation.cs" />
     <Compile Include="Models\CalculatorType.cs" />
+    <Compile Include="ViewModels\Calculators\ScientificCalculatorViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
-    <Compile Include="ViewModels\Bases\CalculatorViewModel.cs" />
+    <Compile Include="ViewModels\Bases\CalculatorViewModelBase.cs" />
     <Compile Include="ViewModels\Bases\ViewModelBase.cs" />
     <Compile Include="ViewModels\Calculators\BasicCalculatorViewModel.cs" />
     <Compile Include="ViewModels\Interfaces\ICalculatorViewModel.cs" />
@@ -152,7 +153,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Styles\Buttons\MenuButtons.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Calculators\BasicCalculators.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Calculators\ScientificCalculator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

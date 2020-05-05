@@ -8,7 +8,7 @@ namespace Calculator.Models
 {
     public class Calculation
     {
-        Calculation(string expression, string value)
+        public Calculation(string expression, string value)
         {
             Expression = expression;
             Value = value;
