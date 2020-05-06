@@ -32,8 +32,8 @@ namespace Calculator.ViewModels.Bases
         public DelegateCommand<string> AddNumberCommand { get; set; }
         public DelegateCommand ClearCommand { get; set; }
         public DelegateCommand EqualsCommand { get; set; }
-
-
+        public abstract int Height { get; set; }
+        public abstract int Width { get; set; }
 
         protected CalculatorViewModelBase(ICalculator calculator) 
         {
@@ -54,12 +54,12 @@ namespace Calculator.ViewModels.Bases
 
 
 
-        private void Clear()
+        protected virtual void Clear()
         {
             Expression = "";
         }
 
-        private void AddNumber(string digit)
+        protected virtual void AddNumber(string digit)
         {
             if (HasCalculated == true)
             {
@@ -70,7 +70,7 @@ namespace Calculator.ViewModels.Bases
 
         }
 
-        public  void Calculate()
+        protected virtual  void Calculate()
         {
             var value = _calculator.Calculate(Expression).ToString("N2");
             var calculation = new Calculation(Expression, value);

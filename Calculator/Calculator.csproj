@@ -105,11 +105,15 @@
     <Compile Include="App_Start\Unity_Config.cs" />
     <Compile Include="Core\Calculators\ExpressionCalculator.cs" />
     <Compile Include="Core\Calculators\ICalculator.cs" />
+    <Compile Include="Core\Constants\CalculatorButtons.cs" />
     <Compile Include="Core\Constants\Calculators.cs" />
     <Compile Include="Core\Helpers\ContainerHelper.cs" />
     <Compile Include="Core\Helpers\IContainerHelper.cs" />
+    <Compile Include="Models\Button.cs" />
     <Compile Include="Models\Calculation.cs" />
+    <Compile Include="Models\CalculatorButton.cs" />
     <Compile Include="Models\CalculatorType.cs" />
+    <Compile Include="Models\SuperscriptButton.cs" />
     <Compile Include="ViewModels\Calculators\ScientificCalculatorViewModel.cs" />
     <Compile Include="ViewModels\ShellViewModel.cs" />
     <Compile Include="ViewModels\Bases\CalculatorViewModelBase.cs" />

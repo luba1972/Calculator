@@ -14,6 +14,9 @@ namespace Calculator.ViewModels.Calculators
 
          public override string CalculatorType => "Basic";
 
+        public override int Height { get; set; } = 400;
+        public override int Width { get; set; } = 350;
+
         public BasicCalculatorViewModel(ICalculator calculator):base(calculator)
         {
         }

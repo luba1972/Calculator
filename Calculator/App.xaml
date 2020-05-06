@@ -8,6 +8,7 @@
                 <!-- MahApps.Metro resource dictionaries. Make sure that all file names are Case Sensitive! -->
                 <ResourceDictionary Source="Styles/Packages/MahBindings.xaml" />
                 <ResourceDictionary Source="Styles/Calculators/BasicCalculators.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="Styles/Calculators/ScientificCalculator.xaml"></ResourceDictionary>
                 <ResourceDictionary Source="Styles/Buttons/MenuButtons.xaml"></ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
